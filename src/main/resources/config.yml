@@ -1,0 +1,49 @@
+# Please do not delete any entries of this Config.
+#  --------------------------------------------------------------------------------------
+# |In order to deactivate any functions please mind about these tips:                    |
+# |For numbers: Set the Value to 0.                                                      |
+# |For texts: Change to ''.                                                              |
+# |For booleans: Set to false.                                                           |
+# |For lists: Set NONE as the only value                                                 |
+#  --------------------------------------------------------------------------------------
+# Please read the information above the entries before modifying them
+
+Config:
+
+  Prefix:
+    # This prefix is shown in front of the chosen plugin messages. At the end of the prefix you should reset the color codes using &r.
+    # The prefix can be added to every message using %PREFIX%.
+    plugin-prefix: '&c[Infinite Blocks]&r'
+
+  # At this part of the config you can set all plugin messages except console outputs and help lists.
+  Messages:
+
+    # This message gets send to a player who has not got the permission to run a specific command.
+    no-permission: '%PREFIX% &4You are not allowed to execute that command.'
+
+    # This message gets send to a player who has reloaded the config files.
+    reloaded-config: '%PREFIX% &aThe Config has been reloaded.'
+    
+    # This message will be send when the item given as a parameter for /infiniteblock is invalid
+    invalid-item: '%PREFIX% &4The item you specified does not exist'
+    
+    # This message will be send when the player given as a parameter for /infiniteblock is invalid
+    invalid-player: '%PREFIX% &4The player you specified does not exist or is not online'
+    
+    # This message will be send to a player who obtains an infinite item
+    # %ITEM% = lowercase name of the item, %ITEMNAME% = Customname if specified in command, otherwise same as %ITEM%
+    obtained-infinite-item: '%PREFIX% &2You obtained infinite &c%ITEMNAME%'
+    
+    # This message will be send to a player who gives an infinite item to another player
+    # %ITEM% = lowercase default name of the item, %ITEMNAME% = Customname if specified in command, otherwise same as %ITEM%,
+    # %PLAYER% = receiving players name, %DISPLAY% = receiving players display name
+    handed-out-infinite-item: '%PREFIX% &2You gave infinite &c%ITEMNAME% &2to &6%PLAYER%'
+    
+    # This message will be sent when the command /infiniteblock is used incorrectly
+    infiniteblock-help: | 
+                          %PREFIX% &4Wrong usage of &6/infiniteblock 
+                          &cCommand syntax: &6/infiniteblock <item> [player] [itemname]
+
+ # Permissionlist:
+ # infiniteblocks.reload: Permission to reload the config.
+ # infiniteblocks.infiniteblock: Permission to hand out infinite blocks

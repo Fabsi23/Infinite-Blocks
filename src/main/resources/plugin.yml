@@ -1,0 +1,12 @@
+name: InfiniteBlocks
+version: 1.0.0
+author: Fabsi23
+api-version: 1.18
+main: me.fabsi23.infiniteblocks.InfiniteBlocks
+commands:
+    infiniteblocksreload:
+        usage: /<command>
+        description: Reloads configuration.
+    infiniteblock:
+        usage: /<command>
+        description: Command to give out infinite blocks.
