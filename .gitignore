@@ -1,3 +1,5 @@
+/idea/
+/.idea/
 *.project
 *.classpath
 dependency-reduced-pom.xml
