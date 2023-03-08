@@ -1,5 +1,6 @@
 package me.fabsi23.infiniteblocks;
 
+import me.fabsi23.infiniteblocks.listeners.PlayerInteractListener;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.PluginManager;
@@ -14,7 +15,7 @@ import me.fabsi23.infiniteblocks.utils.Logging;
 public class InfiniteBlocks extends JavaPlugin {
 
 	/**
-	 * author: Fabsi23 Date: 28.03.2022 - 28.03.2022 (DMY) Last edited: 28.03.2022
+	 * author: Fabsi23 Date: 28.03.2022 - 28.03.2022 (DMY) Last edited: 08.03.2023
 	 */
 
 	private static InfiniteBlocks instance;
@@ -55,6 +56,7 @@ public class InfiniteBlocks extends JavaPlugin {
 	private void registerEvents() {
 		PluginManager pm = this.getServer().getPluginManager();
 		pm.registerEvents(new BlockPlaceListener(), this);
+		pm.registerEvents(new PlayerInteractListener(), this);
 	}
 
 	public static NamespacedKey getNamespacedKey() {

@@ -1,5 +1,6 @@
 package me.fabsi23.infiniteblocks.listeners;
 
+import me.fabsi23.infiniteblocks.utils.infiniteblocks.InfiniteItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,21 +26,10 @@ public class BlockPlaceListener implements Listener {
 		ItemStack main = equipment.getItemInMainHand();
 		ItemStack off = equipment.getItemInOffHand();
 
-		if (isInfiniteItemOfType(main, type)) {
+		if (InfiniteItem.isInfiniteItemOfType(main, type)) {
 			player.getInventory().setItemInMainHand(main);
-		} else if (isInfiniteItemOfType(off, type)) {
+		} else if (InfiniteItem.isInfiniteItemOfType(off, type)) {
 			player.getInventory().setItemInOffHand(off);
 		}
-	}
-
-	private boolean isInfiniteItemOfType(ItemStack stack, Material type) {
-		if (stack.getType() != type)
-			return false;
-		InfiniteBlocks.getReference();
-		Short infinite = stack.getItemMeta().getPersistentDataContainer().get(InfiniteBlocks.getNamespacedKey(),
-				PersistentDataType.SHORT);
-		if (infinite == null || infinite == 0)
-			return false;
-		return true;
 	}
 }
