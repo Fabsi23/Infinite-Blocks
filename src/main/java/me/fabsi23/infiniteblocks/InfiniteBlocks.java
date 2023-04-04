@@ -15,7 +15,7 @@ import me.fabsi23.infiniteblocks.utils.Logging;
 public class InfiniteBlocks extends JavaPlugin {
 
 	/**
-	 * author: Fabsi23 Date: 28.03.2022 - 28.03.2022 (DMY) Last edited: 08.03.2023
+	 * author: Fabsi23 Date: 28.03.2022 - 28.03.2022 (DMY) Last edited: 04.04.2023
 	 */
 
 	private static InfiniteBlocks instance;

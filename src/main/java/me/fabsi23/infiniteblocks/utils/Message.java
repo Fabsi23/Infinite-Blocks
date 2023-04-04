@@ -51,7 +51,7 @@ public class Message {
 		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(""));
 	}
 
-	private static String translateColors(String message) {
+	public static String translateColors(String message) {
 		return ChatColor.translateAlternateColorCodes('&', message);
 	}
 }

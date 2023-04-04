@@ -44,6 +44,13 @@ Config:
                           %PREFIX% &4Wrong usage of &6/infiniteblock 
                           &cCommand syntax: &6/infiniteblock <item> [player] [itemname]
 
+  Settings:
+    # Lore of infinite-blocks. Can be left empty by only setting "-"
+    lore:
+      - '&6This item is infinite'
+      - '&2Enjoy!'
+
+
  # Permissionlist:
  # infiniteblocks.reload: Permission to reload the config.
  # infiniteblocks.infiniteblock: Permission to hand out infinite blocks
