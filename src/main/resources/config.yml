@@ -24,26 +24,41 @@ Config:
     # This message gets send to a player who has reloaded the config files.
     reloaded-config: '%PREFIX% &aThe Config has been reloaded.'
     
-    # This message will be send when the item given as a parameter for /infiniteblock is invalid
+    # This message will be sent when the item given as a parameter for /infiniteblock is invalid
     invalid-item: '%PREFIX% &4The item you specified does not exist'
     
-    # This message will be send when the player given as a parameter for /infiniteblock is invalid
+    # This message will be sent when the player given as a parameter for /infiniteblock is invalid
     invalid-player: '%PREFIX% &4The player you specified does not exist or is not online'
     
-    # This message will be send to a player who obtains an infinite item
+    # This message will be sent to a player who obtains an infinite item
     # %ITEM% = lowercase name of the item, %ITEMNAME% = Customname if specified in command, otherwise same as %ITEM%
     obtained-infinite-item: '%PREFIX% &2You obtained infinite &c%ITEMNAME%'
     
-    # This message will be send to a player who gives an infinite item to another player
+    # This message will be sent to a player who gives an infinite item to another player
     # %ITEM% = lowercase default name of the item, %ITEMNAME% = Customname if specified in command, otherwise same as %ITEM%,
     # %PLAYER% = receiving players name, %DISPLAY% = receiving players display name
     handed-out-infinite-item: '%PREFIX% &2You gave infinite &c%ITEMNAME% &2to &6%PLAYER%'
+
+    # REQUIRES VAULT
+    # This message will be sent to a player when who tries to place an infinite block while not having enough balance
+    # %AMOUNT% = the amount needed to place the block
+    placing-failed-missing-balance: '%PREFIX% &4You do not have the required funds (&c%AMOUNT%&4) to place this block'
     
     # This message will be sent when the command /infiniteblock is used incorrectly
-    infiniteblock-help: | 
-                          %PREFIX% &4Wrong usage of &6/infiniteblock 
-                          &cCommand syntax: &6/infiniteblock <item> [player] [itemname]
+    infiniteblock-help: |
+      %PREFIX% &4Wrong usage of &6/infiniteblock 
+      &cCommand syntax: &6/infiniteblock <item> [player] [itemname]
 
- # Permissionlist:
- # infiniteblocks.reload: Permission to reload the config.
- # infiniteblocks.infiniteblock: Permission to hand out infinite blocks
+  Settings:
+    # REQUIRES VAULT
+    blockUsageCost:
+      # Any material not explicitly defined below will deduct the following amount
+      defaultUsageCost: 0.0
+      usageCostPerMaterial:
+        STONE: 0.0
+        OAK_LOG: 0.0
+
+  # Permissionlist:
+  # infiniteblocks.reload: Permission to reload the config.
+  # infiniteblocks.infiniteblock: Permission to hand out infinite blocks
+  # infiniteblocks.ignoreCost: Permission to ignore vault balance deduction when using infinite blocks
