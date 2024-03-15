@@ -12,14 +12,14 @@ import net.md_5.bungee.api.chat.TextComponent;
 public class Message {
 
 	public static void sendIfNotVoid(CommandSender sender, String message) {
-		if (!(message.trim().equals(""))) {
+		if (!(message.trim().isEmpty())) {
 			message = message.replace("%PREFIX%", InfiniteBlocksConfig.getPluginPrefix());
 			sender.sendMessage(translateColors(message));
 		}
 	}
 	
 	public static void broadcastIfNotVoid(String message) {
-		if (!(message.trim().equals(""))) {
+		if (!(message.trim().isEmpty())) {
 			message = message.replace("%PREFIX%", InfiniteBlocksConfig.getPluginPrefix());
 			Bukkit.broadcastMessage(translateColors(message));
 		}
@@ -32,12 +32,12 @@ public class Message {
 	}
 
 	public static void sendActionbarIfNotVoid(Player player, TextComponent component) {
-		if (!component.getText().trim().equals(""))
+		if (!component.getText().trim().isEmpty())
 			player.spigot().sendMessage(ChatMessageType.ACTION_BAR, component);
 	}
 
 	public static void sendActionbarIfNotVoid(Player player, String message) {
-		if (!(message.trim().equals("")))
+		if (!(message.trim().isEmpty()))
 			player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(translateColors(message)));
 
 	}
@@ -51,7 +51,7 @@ public class Message {
 		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(""));
 	}
 
-	private static String translateColors(String message) {
+	public static String translateColors(String message) {
 		return ChatColor.translateAlternateColorCodes('&', message);
 	}
 }

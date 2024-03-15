@@ -1,6 +1,7 @@
 package me.fabsi23.infiniteblocks.config;
 
 import me.fabsi23.infiniteblocks.utils.Logging;
+import me.fabsi23.infiniteblocks.utils.Message;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -9,11 +10,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.fabsi23.infiniteblocks.InfiniteBlocks;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InfiniteBlocksConfig {
 
     private static Map<Material, Double> materialWithCost;
+    private static List<String> parsedLore;
 
     private static final String CONFIG = "Config.";
     private static final String PREFIX = CONFIG + "Prefix.";
@@ -83,6 +86,14 @@ public class InfiniteBlocksConfig {
         return amount;
     }
 
+    public static List<String> getLoreList(Material mat) {
+        return parsedLore.stream().map(lore -> lore.replace("%AMOUNT%", "" + getMaterialCost(mat))).toList();
+    }
+
+    public static boolean getForceUpdateLore() {
+        return cfg.getBoolean(SETTINGS + "lore.forceUpdate");
+    }
+
     private static double getDefaultCost() {
         return cfg.getDouble(SETTINGS + "blockUsageCost.defaultUsageCost");
     }
@@ -106,5 +117,6 @@ public class InfiniteBlocksConfig {
         plugin.reloadConfig();
         cfg = plugin.getConfig();
         materialWithCost = getMaterialsWithCost();
+        parsedLore = cfg.getStringList(SETTINGS + "lore.loreList").stream().filter(lore -> !lore.isBlank()).map(Message::translateColors).toList();
     }
 }

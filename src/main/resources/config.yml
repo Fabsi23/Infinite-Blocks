@@ -58,6 +58,19 @@ Config:
         STONE: 0.0
         OAK_LOG: 0.0
 
+    # Lore settings for infinite blocks
+    lore:
+      # A list of strings to add as the lore for infinite blocks
+      # %AMOUNT% = Cost to place that infinite block
+      loreList:
+        - '&aThis is an infinite block'
+        - '&6Cost per use: &c%AMOUNT%'
+
+      # Whether the lore shall be force updated when the block is used
+      # Setting this to true will override any lore on the block, including ones added by other means
+      # Setting this to false will add the lore only once and only update infinite blocks without any lore
+      forceUpdate: false
+
   # Permissionlist:
   # infiniteblocks.reload: Permission to reload the config.
   # infiniteblocks.infiniteblock: Permission to hand out infinite blocks

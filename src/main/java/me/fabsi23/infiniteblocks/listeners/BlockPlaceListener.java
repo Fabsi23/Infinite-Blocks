@@ -15,6 +15,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.List;
+
 public class BlockPlaceListener implements Listener {
 
     private final Vault vault;
@@ -33,6 +35,7 @@ public class BlockPlaceListener implements Listener {
 
         Short infinite = meta.getPersistentDataContainer().get(InfiniteBlocks.getNamespacedKey(), PersistentDataType.SHORT);
         if (infinite != null && infinite != 0) {
+            updateLoreIfRequired(inHand, meta);
             double cost = InfiniteBlocksConfig.getMaterialCost(inHand.getType());
             if (successfullyPlaced(player, cost)) {
                 if (e.getHand() == EquipmentSlot.HAND) {
@@ -44,6 +47,16 @@ public class BlockPlaceListener implements Listener {
                 e.setCancelled(true);
                 Message.sendIfNotVoid(player, InfiniteBlocksConfig.getPlacingFailedMissingBalance(cost));
             }
+        }
+    }
+
+    private void updateLoreIfRequired(ItemStack stack, ItemMeta meta) {
+        List<String> lore = meta.getLore();
+        if (InfiniteBlocksConfig.getForceUpdateLore() || lore == null || lore.isEmpty()) {
+            List<String> newLore = InfiniteBlocksConfig.getLoreList(stack.getType());
+            if (newLore.equals(lore)) return;
+            meta.setLore(InfiniteBlocksConfig.getLoreList(stack.getType()));
+            stack.setItemMeta(meta);
         }
     }
 
